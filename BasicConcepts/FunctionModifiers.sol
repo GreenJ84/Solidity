@@ -8,7 +8,7 @@ pragma solidity >=0.4.0 <0.9.0;
 contract FunctionModifiers {
     address owner;
     //set the owner to the deployer of the contract
-    constructor() public{
+    constructor(){
         owner = msg.sender;
     } 
     
@@ -20,7 +20,7 @@ contract FunctionModifiers {
     }
 
     // Gets results from the modifier to run function (run / dont run)
-    function get() public onlyOwner returns (string memory)  {
+    function get() public view onlyOwner returns (string memory)  {
             return "hello solidity";
         }
     
