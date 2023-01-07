@@ -1,26 +1,131 @@
 .main{
-
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin: 60px auto 30px;
+    width: 70%;
+    padding: 3vw;
+    background-color: rgb(188, 188, 188);
+    border-radius: 20px;
+    border: 1px solid black;
+    box-shadow: inset 2px 2px 3px white, 2px 2px 3px black; 
 }
 
 .title{
-
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 4vw;
+    font-weight: 100;
+    line-height: 10vw;
+    font-variation-settings: 'wght' 100, 'wdth' 20;
+    --delay: calc((var(--char-index) + 1) * 400ms);
+    animation: breathe 4000ms infinite both;
+    animation-delay: var(--delay);
 }
 
-.form{
 
+.title:hover{
+    animation-play-state: paused;
+}
+
+@keyframes breathe {
+0% {
+    font-variation-settings: 'wght' 100, 'wdth' 20;
+    font-size: 4vw;
+}
+60% {
+    font-variation-settings: 'wght' 700, 'wdth' 30;
+    font-size: 4.5vw;
+}
+
+100% {
+    font-variation-settings: 'wght' 100, 'wdth' 20;
+    font-size: 4vw;
+}
+}
+
+
+.form{
+    position: relative;
+    width: 80%;
+    margin: auto;
+    padding: 3vw 3vw 6vw;
+    font-size: 2.4vw;
+    color: white;
+    background-color: rgb(80, 178, 253);
+    border: 1.5px solid black;
+    border-radius: 10px;
+    box-shadow: .5px 3px 3px 2px black, inset 0px 1px 4px white;
 }
 
 .formgroup{
 
 }
+.formgroup label,
+.formgroup input,
+.formgroup textarea{
+    position: relative;
+    left: 5vw;
+}
+.formgroup label{
+    text-shadow: 2px 3px 3px black;
+}
+.formgroup input{
+    width: 70%;
+    height: 30px;
+    margin-top: 8px;
+    font-size: 1.7vw;
+    padding: 1vw;
+}
+.formgroup textarea{
+    width: 70%;
+    height: 80px;
+    margin-top: 12px;
+    font-size: 1.7vw;
+    padding: 1vw;
+}
+
+.send{
+    position: relative;
+    left: 14vw;
+    margin-top: 4vw;
+    width: 16vw;
+    font-size: 1.6vw;
+    padding: 1vw .5vw;
+    border: 1px solid black;
+    box-shadow: 2px 2px 3px black;
+}
+.send:hover{
+    box-shadow: 4px 4px 5px black, inset 1px 1px 2px white;
+}
+
+.subTitle{
+    margin: 10vw 0 4vw;
+    text-align: center;
+    font-size: 5vw;
+}
 
 .memo{
+    position: relative;
+    width: 60%;
+    margin: 2vw auto;
+    padding: 2vw 3vw;
     border: 2px solid black; 
     border-radius:10px;
-    padding: 5px; 
-    margin: 5px;
+    font-size: 2vw;
+    background-color: rgb(166, 166, 166);
+    box-shadow: inset 1px 1px 2px white, 2px 2px 2px black;
+}
+
+.memo:hover{
+    transform: scale(1.2);
+    box-shadow: inset 2px 2px 3px white, 3px 3px 3px black;
 }
 
 .memoTitle{
     font-weight: 900;
+    font-size: 2.4vw;
+    margin-bottom: 8px;
 }
