@@ -3,6 +3,8 @@ import { BigNumber, Contract, ethers } from "ethers";
 import Head from 'next/head'
 import React, { useEffect, useState } from "react";
 
+const css = require('../styles/index.module.css')
+
 declare let window: any
 
 interface Memo{
@@ -176,22 +178,20 @@ export default function Home() {
 
 
   return (
-    <div>
+    <>
       <Head>
         <title>Buy Me Coffee</title>
         <meta name="description" content="Buy Me a Coffee tipping app" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Buy Albert a Coffee!
+      <main className={css.main}>
+        <h1 className={css.title}>
+          Buy JesseG a Coffee!
         </h1>
         
         {currentAccount ? (
-          <div>
-            <form>
-              <div className="formgroup">
+            <form className={ css.form }>
+              <div className={ css.formgroup }>
                 <label>
                   Name
                 </label>
@@ -205,9 +205,9 @@ export default function Home() {
                   />
               </div>
               <br/>
-              <div className="formgroup">
+              <div className={ css.formgroup }>
                 <label>
-                  Send Albert a message
+                  Send a message w/ tip
                 </label>
                 <br/>
 
@@ -220,27 +220,23 @@ export default function Home() {
                 >
                 </textarea>
               </div>
-              <div>
                 <button
                   type="button"
                   onClick={buyCoffee}
                 >
                   Send 1 Coffee for 0.001ETH
                 </button>
-              </div>
             </form>
-          </div>
         ) : (
           <button onClick={connectWallet}> Connect your wallet </button>
         )}
       </main>
 
       {currentAccount && (<h1>Memos received</h1>)}
-
       {currentAccount && (memos.map((memo, idx) => {
         return (
-          <div key={idx} style={{border:"2px solid", borderRadius:"5px", padding: "5px", margin: "5px"}}>
-            <p style={{fontWeight:"bold"}}>"{memo.message}"</p>
+          <div key={idx} className={ css.memo }>
+            <h3 className={ css.memoTitle }>"{memo.message}"</h3>
             <p>From: {memo.name} at {memo.timestamp.toString()}</p>
           </div>
         )
@@ -255,6 +251,6 @@ export default function Home() {
           Created by JesseG84 for Alchemy's Road to Web3 lesson two!
         </a>
       </footer>
-    </div>
+    </>
   )
 }
