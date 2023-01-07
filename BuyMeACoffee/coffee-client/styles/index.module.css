@@ -1,0 +1,26 @@
+.main{
+
+}
+
+.title{
+
+}
+
+.form{
+
+}
+
+.formgroup{
+
+}
+
+.memo{
+    border: 2px solid black; 
+    border-radius:10px;
+    padding: 5px; 
+    margin: 5px;
+}
+
+.memoTitle{
+    font-weight: 900;
+}
