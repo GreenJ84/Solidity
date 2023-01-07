@@ -193,7 +193,7 @@ export default function Home() {
             <form className={ css.form }>
               <div className={ css.formgroup }>
                 <label>
-                  Name
+                  Name:
                 </label>
                 <br/>
                 
@@ -207,7 +207,7 @@ export default function Home() {
               <br/>
               <div className={ css.formgroup }>
                 <label>
-                  Send a message w/ tip
+                  Send a message:
                 </label>
                 <br/>
 
@@ -220,11 +220,12 @@ export default function Home() {
                 >
                 </textarea>
               </div>
-                <button
+              <button
+                className={ css.send }
                   type="button"
                   onClick={buyCoffee}
                 >
-                  Send 1 Coffee for 0.001ETH
+                  Send 1 Coffee
                 </button>
             </form>
         ) : (
@@ -232,7 +233,7 @@ export default function Home() {
         )}
       </main>
 
-      {currentAccount && (<h1>Memos received</h1>)}
+      {currentAccount && (<h1 className={ css.subTitle }>Memos received</h1>)}
       {currentAccount && (memos.map((memo, idx) => {
         return (
           <div key={idx} className={ css.memo }>
