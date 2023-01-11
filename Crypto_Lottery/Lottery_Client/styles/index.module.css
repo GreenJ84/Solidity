@@ -17,6 +17,7 @@
 }
 
 .connected{
+    width: 100%;
     background-color: grey;
     padding: 1vw 1vw 5vw;
 }
