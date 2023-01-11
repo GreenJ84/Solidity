@@ -14,13 +14,13 @@ export default function Home() {
   const contractAddress: string = "0xD25eD74D6C7Fbc2A093ba0EBf3d2134521951944"
   const contractABI: Object[] = abi.abi
 
-  const [ manager, setManager ] = useState('')
-  const [ balance, setBalance ] = useState(0)
-  const [ entryFee, setEntryFee ] = useState(0)
-  const [ participants, setParticipants ] = useState(Array<String>)
+  const [manager, setManager] = useState('')
+  const [balance, setBalance] = useState(0)
+  const [entryFee, setEntryFee] = useState(0)
+  const [participants, setParticipants] = useState(Array<String>)
 
   const [currentAccount, setCurrentAccount] = useState("");
-  const [fee, setFee] = useState(0)
+  const [fee, setFee] = useState(entryFee)
 
 
   const entryFeeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -31,7 +31,7 @@ export default function Home() {
     try {
       const { ethereum } = window;
 
-      const accounts = await ethereum.request({method: 'eth_accounts'})
+      const accounts = await ethereum.request({ method: 'eth_accounts' })
       console.log("accounts: ", accounts);
 
       if (accounts.length > 0) {
@@ -47,7 +47,7 @@ export default function Home() {
 
   const connectWallet = async () => {
     try {
-      const {ethereum} = window;
+      const { ethereum } = window;
 
       if (!ethereum) {
         console.log("Please install MetaMask");
@@ -67,7 +67,7 @@ export default function Home() {
   const onEntryFeeHandler = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
     try {
-      const {ethereum} = window;
+      const { ethereum } = window;
 
       if (ethereum) {
         const provider = new ethers.providers.Web3Provider(ethereum, "any");
@@ -89,7 +89,7 @@ export default function Home() {
   const newEntry = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
     try {
-      const {ethereum} = window;
+      const { ethereum } = window;
 
       if (ethereum) {
         const provider = new ethers.providers.Web3Provider(ethereum, "any");
@@ -103,6 +103,7 @@ export default function Home() {
         setParticipants((prev) => [...prev, currentAccount])
 
         const balance = await provider.getBalance(contractAddress)
+        console.log(balance.toNumber());
         setBalance(balance.toNumber())
       }
     } catch (error) {
@@ -113,7 +114,7 @@ export default function Home() {
   const drawWinnerHandler = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
     try {
-      const {ethereum} = window;
+      const { ethereum } = window;
 
       if (ethereum) {
         const provider = new ethers.providers.Web3Provider(ethereum, "any");
@@ -151,7 +152,26 @@ export default function Home() {
           signer
         );
         const manager = await cryptoLottery.manager()
+        const balance = await provider.getBalance(contractAddress)
+        const entryFee = await cryptoLottery.entryFee()
+
         setManager(manager)
+        setBalance(balance.toNumber())
+        setEntryFee(entryFee.toNumber())
+        setParticipants(Array.from('0'.repeat(Math.round(balance.toNumber()/(entryFee*1.3)))))
+      } else {
+        console.log("Metamask is not connected");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const getBalance = async () => {
+    try {
+      const { ethereum } = window;
+      if (ethereum) {
+        const provider = new ethers.providers.Web3Provider(ethereum);
         const balance = await provider.getBalance(contractAddress)
         setBalance(balance.toNumber())
       } else {
@@ -168,6 +188,11 @@ export default function Home() {
     getManager();
   }, []);
 
+  useEffect(() => {
+    getBalance()
+  }, [participants]);
+
+
   return (
     <>
       <Head>
@@ -180,7 +205,6 @@ export default function Home() {
         <h1 className={ css.title }>
           Crypto Lottery
         </h1>
-        { fee }
         { currentAccount ?
           <div className={css.connected}>
             {currentAccount.toUpperCase() == manager.toUpperCase() ?
@@ -209,7 +233,7 @@ export default function Home() {
             <h2> Contract Manager address: <em>{manager}</em></h2>
 
 
-            {entryFee == 0 ? 
+            {entryFee != 0 ? 
               <div className={ css.display }>
                 <p>There are currently {participants.length} entries placed for a chance to win {balance} eth</p>
                 <br/>
