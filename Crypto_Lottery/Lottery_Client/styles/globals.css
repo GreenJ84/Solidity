@@ -23,7 +23,7 @@ body {
 }
 
 body {
-  color:var(--text)
+  background-color: lightblue;
 }
 
 a {
