@@ -1,5 +1,5 @@
 import abi from '../utils/BuyMeACoffee.json';
-import { BigNumber, Contract, ethers } from "ethers";
+import { Contract, ethers } from "ethers";
 import Head from 'next/head'
 import React, { useEffect, useState } from "react";
 
