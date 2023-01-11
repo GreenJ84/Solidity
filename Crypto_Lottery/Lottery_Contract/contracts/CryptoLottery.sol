@@ -7,9 +7,17 @@ contract CryptoLottery {
   address payable[] public participants;
 
 
-  constructor(uint amount) {
-    entryFee = amount;
+  constructor() {
     manager = msg.sender;
+  }
+
+  modifier onlyManager() {
+        require(msg.sender == manager, "You are not the manager");
+        _;
+  }
+
+  function setEntry(uint amt) public onlyManager{
+    entryFee = amt;
   }
 
   modifier validEntry() {
@@ -25,10 +33,6 @@ contract CryptoLottery {
         return uint(keccak256(abi.encodePacked(block.difficulty, block.timestamp, participants)))%participants.length;
     }
 
-  modifier onlyManager() {
-        require(msg.sender == manager);
-        _;
-  }
   function drawWinner() public onlyManager{
     uint rand = random();
     address payable winner = participants[rand];
@@ -36,7 +40,7 @@ contract CryptoLottery {
     participants = new address payable[](0);
   }
 
-  function payWinner(address payable _winner) public{
+  function payWinner(address payable _winner) public onlyManager{
     require(_winner.send(address(this).balance));
   }
 }
