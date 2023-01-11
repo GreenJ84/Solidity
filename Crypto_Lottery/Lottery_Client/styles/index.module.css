@@ -1,0 +1,81 @@
+.main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 70%;
+    margin: 5vw auto;
+    background-color: lightgray;
+    border: 1px solid black;
+    padding: 3vw 0 0;
+}
+
+.title{
+    font-size: 5vw;
+    margin-bottom: 8vw;
+    text-shadow: 3px 3px 3px rgb(85, 85, 85);
+}
+
+.connected{
+    background-color: grey;
+    padding: 1vw 1vw 5vw;
+}
+
+.connected>h2{
+    font-size: 2.5vw;
+    margin: 20px 0;
+}
+
+.manager{
+    padding: 1.5vw 1vw 2vw;
+    background-color: rgba(255, 0, 0, 0.741)
+}
+
+.manager>h2{
+    margin-bottom: 20px;
+}
+
+.form{
+    display: flex;
+    justify-content: center;
+    gap: 2vw;
+    font-size: 2vw;
+}
+
+.form>input{
+    font-size: 2vw;
+    width: 50px;
+}
+
+.button1, .button2{
+    padding: 5px;
+    font-size: 1.6vw;
+    background-color: rgb(190, 251, 251);
+    border: 1px solid black;
+    box-shadow: 2px 2px 3px black;
+}
+.button1:hover, .button2:hover{
+    box-shadow: 4px 4px 7px black, inset 1px 1px 3px white;
+    background-color: rgb(57, 103, 253);
+    color: white;
+}
+
+.button2{
+    background-color: rgb(250, 198, 174);
+
+}
+.button2:hover{
+    background-color: rgb(254, 90, 40);
+}
+
+.display{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    font-size: 2.2vw;
+    text-align: center;
+    padding: 2vw;
+    width: 80%;
+}
