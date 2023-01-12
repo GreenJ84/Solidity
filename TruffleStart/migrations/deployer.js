@@ -1,0 +1,1 @@
+module.exports = require("./1_deploy_contracts")(artifacts, web3);
