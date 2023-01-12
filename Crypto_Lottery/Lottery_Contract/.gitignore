@@ -5,6 +5,12 @@ coverage.json
 typechain
 typechain-types
 
+# Truffle
+build
+
+# TypeChain
+types
+
 # Hardhat files
 cache
 artifacts
