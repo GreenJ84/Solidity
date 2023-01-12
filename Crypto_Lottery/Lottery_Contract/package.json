@@ -13,9 +13,19 @@
     "[]"
   ],
   "author": "jesse_greenough",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "@truffle/hdwallet-provider": "^2.1.4",
     "dotenv": "^16.0.3"
+  },
+  "devDependencies": {
+    "@typechain/truffle-v5": "^8.0.2",
+    "@types/chai": "^4.3.4",
+    "@types/mocha": "^10.0.1",
+    "@types/node": "^18.11.18",
+    "truffle": "^5.7.2",
+    "ts-node": "^10.9.1",
+    "typechain": "^8.1.1",
+    "typescript": "^4.9.4"
   }
 }
