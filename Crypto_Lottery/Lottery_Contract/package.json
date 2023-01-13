@@ -7,7 +7,9 @@
     "test": "test"
   },
   "scripts": {
-    "test": "truffle test"
+    "test": "truffle test",
+    "generate-types": "npx typechain --target=truffle-v5 'build/contracts/*.json'",
+    "compile": "truffle compile && npm run generate-types"
   },
   "keywords": [
     "[]"
