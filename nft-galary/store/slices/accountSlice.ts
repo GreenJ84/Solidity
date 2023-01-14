@@ -2,11 +2,15 @@
 
 import { createSlice } from "@reduxjs/toolkit";
 
+export interface accountType{
+    value: string
+}
+
 const accountSlice = createSlice({
   name: "Account",
   initialState: {
     value: "",
-  },
+  } as accountType,
   reducers: {
     setAccount: (state, action) => {
       state.value = action.payload;
@@ -14,5 +18,5 @@ const accountSlice = createSlice({
   },
 });
 
-export const {} = accountSlice.actions;
-export default accountSlice;
+export const { setAccount } = accountSlice.actions;
+export default accountSlice.reducer;

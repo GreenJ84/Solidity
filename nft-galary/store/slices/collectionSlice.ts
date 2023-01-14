@@ -18,5 +18,5 @@ const collectionSlice = createSlice({
   },
 });
 
-export const {} = collectionSlice.actions;
+export const { setCollection } = collectionSlice.actions;
 export default collectionSlice.reducer;
