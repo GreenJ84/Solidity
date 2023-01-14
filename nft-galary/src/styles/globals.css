@@ -20,6 +20,11 @@ body{
   background-color: rgb(235, 235, 235);
 }
 
+a{
+  text-decoration: none;
+  color: black;
+}
+
 input{
   padding: .4vw;
   border-right: none;
