@@ -1,0 +1,41 @@
+.modal{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width:70%;
+    margin: 2vw auto;
+    padding: 7vw 5vw 5vw;
+    border-radius: 20px;
+    background-color: rgb(163, 185, 192);
+}
+
+.close{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    border-radius: 50%;
+    width: 3vw;
+    height: 3vw;
+    padding: 0
+}
+
+.title{
+    text-align: center;
+    font-size: 5vw;
+}
+.title>p{
+    font-size: 2.4vw;
+}
+.title>p:nth-child(2){
+    font-size: 1.8vw;
+}
+.title>p>span{
+    color: red;
+    text-decoration: underline;
+    text-decoration-color: black;
+}
