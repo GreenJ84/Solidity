@@ -16,3 +16,26 @@
   margin: 0;
 }
 
+input{
+  padding: .4vw;
+  border-right: none;
+  border: 1px solid black
+}
+input:hover{
+  background-color: aliceblue;
+  box-shadow: inset .5px .5px .5px black, inset -.5px -.5px .5px black;
+
+}
+
+button{
+  padding: .4vw .6vw;
+  border: 1px solid black;
+  border-left: none;
+  box-shadow: 2px 2px 2px black;
+}
+button:hover{
+  box-shadow: inset 1px 1px 1px black, inset -1px -1px 1px black;
+}
+
+
+
