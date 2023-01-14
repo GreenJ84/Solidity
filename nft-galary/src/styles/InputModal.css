@@ -35,7 +35,7 @@
     font-size: 1.8vw;
 }
 .title>p>span{
-    color: red;
+    color: rgb(32, 65, 74);
     text-decoration: underline;
     text-decoration-color: black;
 }
