@@ -26,10 +26,19 @@ a{
 }
 
 input{
+  margin-bottom: 10px;
+  height: 40px;
+  width: 60%;
   padding: .4vw;
   border-right: none;
-  border: 1px solid black
+  border: 1px solid black;
+  border-radius: 5px 0 0 5px;
 }
+input+button{
+  border-radius: 0 15px 15px 0;
+  height: 40px;
+}
+
 input:hover{
   background-color: aliceblue;
   box-shadow: inset .5px .5px .5px black, inset -.5px -.5px .5px black;
@@ -41,6 +50,7 @@ button{
   border: 1px solid black;
   border-left: none;
   box-shadow: 2px 2px 2px black;
+  border-radius: 15px;
 }
 button:hover{
   box-shadow: inset 1px 1px 1px black, inset -1px -1px 1px black;
