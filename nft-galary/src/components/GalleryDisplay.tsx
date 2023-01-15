@@ -2,9 +2,8 @@ import React from 'react'
 import Image from 'next/image';
 import { nftsType } from '@/pages';
 
-const galaryDisplay = (props: { nfts: Array<nftsType>}) => {
+const galleryDisplay = (props: { nfts: Array<nftsType>}) => {
   const { nfts } = props;
-  console.log(nfts);
 
 
   const toggleDesc = (adr: string) => {
@@ -74,4 +73,4 @@ const galaryDisplay = (props: { nfts: Array<nftsType>}) => {
   )
 }
 
-export default galaryDisplay;
+export default galleryDisplay;
