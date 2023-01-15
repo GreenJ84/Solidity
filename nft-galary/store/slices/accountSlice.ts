@@ -9,7 +9,7 @@ export interface accountType{
 const accountSlice = createSlice({
   name: "Account",
   initialState: {
-    value: "",
+    value: "0x2219772388c4CCcCB8E5D71197965cee1B124622",
   } as accountType,
   reducers: {
     setAccount: (state, action) => {
