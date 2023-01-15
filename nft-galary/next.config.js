@@ -5,7 +5,8 @@ const nextConfig = {
     domains: [
       "i.seadn.io",
       "nft-cdn.alchemy.com",
-      "imgs.search.brave.com"
+      "imgs.search.brave.com",
+      "ipfs.io"
     ]
   }
 }
