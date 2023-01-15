@@ -4,11 +4,28 @@
     justify-content: center;
     align-items: center;
     position: relative;
-    width:70%;
+    width:90%;
     margin: 2vw auto;
     padding: 7vw 5vw 5vw;
     border-radius: 20px;
     background-color: rgb(163, 185, 192);
+}
+
+.modal>div{
+    display: flex;
+    justify-content: center;
+    width: 70%;
+}
+
+.modal>p{
+    font-size: 3.5vw;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.modal>button:last-child{
+    height: 40px;
+    width: 40%;
 }
 
 .close{
@@ -19,8 +36,9 @@
     top: 15px;
     right: 15px;
     border-radius: 50%;
-    width: 3vw;
-    height: 3vw;
+    width: 4.5vw;
+    height: 4.5vw;
+    font-size: 1.8vw;
     padding: 0
 }
 
@@ -28,6 +46,7 @@
     text-align: center;
     font-size: 5vw;
 }
+
 .title>p{
     font-size: 2.4vw;
 }
