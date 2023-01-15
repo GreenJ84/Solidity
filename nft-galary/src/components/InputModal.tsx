@@ -1,9 +1,10 @@
 import React, { useState } from "react"
-import { useDispatch } from "react-redux";
-import { setAccount } from "store/slices/accountSlice";
+import { useDispatch, useSelector } from "react-redux";
+import  { setAccount } from "store/slices/accountSlice";
 import { setCollection } from "store/slices/collectionSlice";
 
 import { MdClose } from "react-icons/md"
+import { storeType } from "store/store";
 
 interface inputType{
   fetchA: Function
@@ -12,10 +13,11 @@ interface inputType{
 
 const InputModal = (props: inputType) => {
   const { fetchA, fetchC } = props;
-  const [open, setOpen] = useState(true);
-  const [acct, setAcct] = useState('')
-  const [coll, setColl] = useState('')
+  const [open, setOpen] = useState(false);
+  const [acct, setAcct] = useState('');
+  const [coll, setColl] = useState('');
   const dispatch = useDispatch();
+  const { account } = useSelector((state: storeType) => state )
 
   const modalHandler = () => {
     if (open) {
@@ -24,27 +26,39 @@ const InputModal = (props: inputType) => {
       setOpen(true)
     }
   }
-
-  const clearStore = () => {
-    dispatch(setAccount(""));
-    dispatch(setCollection(""));
+  const clearStore = async () => {
+    await dispatch(setAccount(""));
+    await dispatch(setCollection(""));
   }
-  const storeHandler = (op: string) => {
-    clearStore();
-    if (op == "account" || op == "both") {
-      let x = document.getElementById("account")! as HTMLInputElement;
-      dispatch(setAccount(x.value));
-      fetchA()
+  const storeHandler = async (op: string) => {
+    console.log("top");
+    // await clearStore();
+    console.log("switch");
+    switch(op){
+      case "account":
+        let x = document.getElementById("account")! as HTMLInputElement;
+        console.log("top switch");
+        dispatch(setAccount(x.value));
+        await fetchA();
+      console.log("mid switch");
+        setColl("");
+        break;
+      case "collection":
+        let y = document.getElementById("collection")! as HTMLInputElement;
+        dispatch(setCollection(y.value));
+        await fetchC();
+        setAcct("");
+        break;
+      case "both":
+        let bx = document.getElementById("account")! as HTMLInputElement;
+        dispatch(setAccount(bx.value));
+        let by = document.getElementById("collection")! as HTMLInputElement;
+        dispatch(setCollection(by.value));
+        await fetchA();
+        break;
+      default:
+        storeHandler(op);
     }
-    if (op == "collection" || op == "both") {
-      let y = document.getElementById("collection")! as HTMLInputElement;
-      dispatch(setCollection(y.value));
-      if (op == "collection") {
-        fetchC();
-      }
-    }
-    setAcct('');
-    setColl('');
     setOpen(false);
   }
 
@@ -52,9 +66,12 @@ const InputModal = (props: inputType) => {
     <>
       {open ?
         <div className="modal">
-
-          <p>Select the Galary you want to see by checking out an Ethereum collection or a Wallet's NFTs</p>
+          <button onClick={modalHandler} className="close">
+            <MdClose />
+          </button>
+          <p>Select the Gallery you want to see by checking out an Ethereum collection or a Wallet's NFTs</p>
           <div>
+            {acct}
             <input id="account"
               type="text" value={acct}
               onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
@@ -64,6 +81,7 @@ const InputModal = (props: inputType) => {
             <button onClick={() => storeHandler("account")}> Search Account </button>
           </div>
           <div>
+            {coll}
             <input id="collection" type="text"
               value={coll}
               onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
@@ -71,12 +89,10 @@ const InputModal = (props: inputType) => {
             <button onClick={() => storeHandler("collection")}> Search Collection </button>
           </div>
           <button onClick={() => storeHandler("both")}> Search Both </button>
-          <button onClick={modalHandler} className="close">
-            <MdClose />
-          </button>
         </div> :
         <div className="modal">
-          <p> Hope you enjoy my collection! Click below  if you would like to see a different account of specific collection on Ethereum </p>
+          { account.value == "0x2219772388c4CCcCB8E5D71197965cee1B124622" ? <p> Hope you enjoy my collection!</p> : ""}
+          <p>Click below  if you would like to see a different account of specific collection on Ethereum </p>
           <button onClick={modalHandler} > Search </button>
         </div>}
     </>
