@@ -17,7 +17,9 @@ async function main() {
 
 // We recommend this pattern to be able to use async/await everywhere
 // and properly handle errors.
-main().catch((error) => {
+main()
+  .then(() => console.log("Lock contract has been depolyed!"))
+  .catch((error) => {
   console.error(error);
   process.exitCode = 1;
 });
